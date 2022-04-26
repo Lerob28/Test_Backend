@@ -1,4 +1,4 @@
-const Plats = require('../models/Plat')
+const Plats = require('../daoModels/Plat')
 
 // creation nouveau Plats 
 exports.CreatePlats = (req, res) => {
@@ -81,6 +81,6 @@ exports.UpdatePlats = (req, res) => {
       })
    })
    .catch((e) => {
-      res.status(500).send(" Aucun Plat n'a été trouvé ")
+      res.status(500).send(" Aucun Plat ne correspond a l'identifiant envoyé ")
    })
 }

@@ -1,4 +1,4 @@
-const Commande = require('../models/Commande')
+const Commande = require('../daoModels/Commande')
 
 // creation nouvelle Commande 
 exports.CreateCommande = (req, res) => {

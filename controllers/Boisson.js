@@ -1,4 +1,4 @@
-const Boisson = require('../models/Boisson')
+const Boisson = require('../daoModels/Boisson')
 
 // creation nouvelle Boisson 
 exports.CreateBoisson = (req, res) => {

@@ -9,7 +9,8 @@ const CommandeSchema = new Schema(
     delivery_time: String,
     delivery_place: String,
     Customer_Number: String,
-  }
+  },
+  { timestamps: true }
 
 )
 

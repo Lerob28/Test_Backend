@@ -1,4 +1,4 @@
-const Menu = require('../models/Menu')
+const Menu = require('../daoModels/Menu')
 
 // creation nouveau Menu 
 exports.CreateMenu = (req, res) => {

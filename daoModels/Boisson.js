@@ -7,7 +7,8 @@ const BoissonSchema = new Schema(
     label: String,
     price: Number,
     category: String,
-  }
+  },
+  { timestamps: true }
 
 )
 

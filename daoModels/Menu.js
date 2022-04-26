@@ -7,7 +7,8 @@ const MenuSchema = new Schema(
     foods: String,
     drinks: String,
     date: String,
-  }
+  },
+  { timestamps: true }
 
 )
 

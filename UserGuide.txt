@@ -1,87 +1,95 @@
-                                        Utilisation de L"API:
+                                       Documentation de L'API Restaurant
+
+1. <<<<<<<<<<< Présentation et installation >>>>>>>>>>>>>>>
+
+        L'API tourne par defaut sur le port 5005 du serveur qui l'heberge et utilise une base de donnee
+        Mongodb. une fois le projet cloné, rassurez vous d'avoir node js version 16 minimum installé sur votre machine
+        avec Mongodb version 4. Ensuite, placez vous a la racine du projet et vous executez la commande <$:  npm i > ou 
+        <$:  npm install > afin d'installer toutes les dependances de votre projet. npm est le gestionnaire de paquet 
+        qui vient avec node js.
+
+        creer un fichier .env a la racine de votre projet et coller le code ci dessous:
+            | PORT = 5005;  // port par défaut
+            | MongoConnect = 'mongodb://localhost/Restaurant'; // URI de connection a la Base de donnée
 
 
-1. L'API tourne par defaut sur le port 5005 du serveur qui l'heberge et utilise une base de donnee
-Mongodb. une fois le projet clone, rassurez vous d'avoir node js version 16 installe sur votre machine
-avec Mongodb version 4, ensuite placez vous a la racine du projet et vous executez la commande <$:  npm i >
-afin d'installer toutes les dependances de votre projet.
+        une fois la commande <$:  npm install > terminée et le fichier .env cree, vous pouvez lancer votre API 
+        avec la commande <$: nodemon ServerResto.js > ou <$: node ServerResto.js >.
+        vous obtiendrez un message vous indiquant sur quel port tourne votre serveur ainsi qu'un joli message vous indiquant
+        que la connection a été établie avec la base de donnée. Vous etes alors pret a interagir avec l'API grace aux requetes.
 
-une fois la commande terminee, vous pouvez lancer votre API avec la commande <$: nodemon server3.js >
-vous obtiendrez un message vous indiquant sur quel port tourne votre serveur et un joli message vous indiquant
-que la connection a ete etablie avec la base de donnee.
+       
 
+2. <<<<<<<<<<< Fonctionnalitées  Disponibles >>>>>>>>>>>>>>>
 
+        L'API repond aux endpoints spcécifiques afin d'effectuer les opérations 
+        de Base CRUD (Création, lecture, modification et suppression) sur les différentes entitées suivantes :
 
-
-2. L'API repond aux endpoint spcecifiques afin d'effectuer les operations 
-
-de Base ( CRUD ) sur les differentes entites suivantes :
-
-- Plats
-- Boisson
-- Commande
-- Menu
-
-
-
-
-
-
-3. la structure des endpoints utilise dans l'API respecte le squelette ci dessous:
-
-<entite>: plats / Boisson / Commande / Menu 
-<id du document (a actualiser/ a supprimer)> : l'id du document fourni par la base de donnee ( "_id" )
-
-
---- http:// hostname:port/api/<nom entité>/new   ->  pour les requetes de type Create (utilisation de la methode post)
-                                                 ->  avec les donnees a inserer dans le corps de la requete
-
---- http:// hostname:port/api/<nom entité>/      ->  pour les requetes de type Read (utilisation de la methode get)
-
---- http:// hostname:port/api/<nom entité>/refresh/:<id du document a actualiser>  
-                                                 ->  pour les requetes de type Update (utilisation de la methode put)
-
---- http:// hostname:port/api/<nom entité>/rem/:<id du document a supprimer>  
-                                                 ->  pour les requetes de type Delete (utilisation de la methode delete)
+        - Plat
+        - Boisson
+        - Commande
+        - Menu
 
 
 
+3. <<<<<<<<<<< Structure >>>>>>>>>>>>>>>
+
+        la structure des endpoints utilise dans l'API respecte le squelette ci dessous:
+
+        <hostname> : l'adresse sur lequel tourne l'API
+        <port> : le port utilise par l'API ( par defaut elle est égale a 5005 )
+        <nom entité>: plats / Boisson / Commande / Menu 
+        <id du document (a actualiser/ a supprimer)> : l'id du document fourni par la base de donnee ( "_id" )
 
 
-4. Exemples ( lorsque le serveur tourne en local )
-a l'aide d'un client http, vous pouvez essayer les requetes suivantes:
+        --- http://<hostname>:<port>/api/<nom entité>/new   ->  pour les requetes de type Create (utilisation de la methode post)
+                                                            ->  avec les donnees a inserer dans le corps de la requete
 
+        --- http://<hostname>:<port>/api/<nom entité>/      ->  pour les requetes de type Read (utilisation de la methode get)
 
-> pour la creation d'une commande, la requete a effectuer a l'API est a suivante:
-    post('http://localhost:5005/api/Commande/new')
+        --- http://<hostname>:<port>/api/<nom entité>/refresh/:<id du document a actualiser>  
+                                                            ->  pour les requetes de type Update (utilisation de la methode put)
 
-> la mise a jour d'une commande interceptera la requete :
-    put('http://localhost:5005/api/Commande/refresh/4898000tenv87chuv)
-        4898000tenv87chuv: represente l'Id de la commande a actualiser
-
-> la suppression d'une commande repondra a la route:
-    delete('http://localhost:5005/api/Commande/rem/4898000tenv87chuv)
-
->   enfin, la lecture de toutes les commandes en cour se fera via la requete:
-    get('http://localhost:5005/api/Commande/)
-
-
-5. Structure des donnees attendu
-consulter les different fichiers dans le dossier ./models afin de voir la structure et le nom des donnees
-attendu par chaque entite.
-
-pour une commande par exemple, la structure est la suivante:
-    foods: String, ( le nom du plat du menu )
-    delivery_day: String, ( la date a laquelle la commande doit etre livree )
-    delivery_time: String, ( l'heure de livraison )
-    delivery_place: String, ( le lieu de livraison )
-    Customer_Number: String, ( le numero du client ayant passe la commande )
+        --- http://<hostname>:<port>/api/<nom entité>/rem/:<id du document a supprimer>  
+                                                            ->  pour les requetes de type Delete (utilisation de la methode delete)
 
 
 
+4. <<<<<<<<<<< Exemples D'utilisation ( lorsque le serveur tourne en local ) >>>>>>>>>>>>>>>
+
+        a l'aide d'un client http, vous pouvez effectuer les requetes suivantes:
 
 
-6. Support:
+        > pour la creation d'une commande, la requete a effectuer a l'API est a suivante:
+            post('http://localhost:5005/api/Commande/new')
 
-pour tout soucis lors de l'utilisation de l'API, sentez vous libre de contacter l'equipe de developpement
-en envoyant un mail a njeunkweborel@gmail.com avec pour objet < Resto API Help >
+        > la mise a jour d'une commande interceptera la requete :
+            put('http://localhost:5005/api/Commande/refresh/fihoj4898000tenv87chuv)
+                4898000tenv87chuv: represente l'Id de la commande a actualiser
+
+        > la suppression d'une commande repondra a la route:
+            delete('http://localhost:5005/api/Commande/rem/fihoj4898000tenv87chuv)
+
+        >   enfin, la lecture de toutes les commandes en cour se fera via la requete:
+            get('http://localhost:5005/api/Commande/)
+
+
+
+5. <<<<<<<<<<< Structure des donnees attendu >>>>>>>>>>>>>>>
+
+        consulter les différents fichiers dans le dossier ./daoModels a la racine du projet afin de voir la structure et le nom des données
+        attendu par chaque entité.
+
+        pour une commande par exemple, la structure est la suivante:
+            foods: String, ( le nom du plat du menu )
+            delivery_day: String, ( la date a laquelle la commande doit etre livrer )
+            delivery_time: String, ( l'heure de livraison )
+            delivery_place: String, ( le lieu de livraison )
+            Customer_Number: String, ( le numero du client ayant passé la commande )
+
+
+
+6. <<<<<<<<<<< Aide et Support >>>>>>>>>>>>>>>
+
+        pour tout soucis consernant l'utilisation de l'API, veillez contacter l'equipe de développement
+        en envoyant un mail a l'adresse ( njeunkweborel@gmail.com ) avec pour objet < Resto API Help >
